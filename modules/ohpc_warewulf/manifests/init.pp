@@ -7,6 +7,8 @@
 # Copyright 2016 Your name here, unless otherwise noted.
 #
 class ohpc_warewulf(
+  $chroot = 'undef',
+  $os_template = 'undef',
   $sms_eth_internal = 'undef',
   $sms_ip = 'undef',
   $internal_netmask = 'undef',
@@ -86,6 +88,13 @@ class ohpc_warewulf(
         enable => false,
       }
     }
+  }
+
+  exec { 'wwmkchroot':
+    refreshonly => true,
+    path        => ['/usr/sbin', '/usr/bin'],
+    command     => "wwmkchroot ${os_template} ${chroot}",
+    require     => Ohpc_base::Yumgroup['ohpc-warewulf'],
   }
 
 }
