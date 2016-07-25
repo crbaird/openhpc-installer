@@ -97,11 +97,18 @@ class ohpc_warewulf(
     require     => Ohpc_base::Yumgroup['ohpc-warewulf'],
   }
 
+  package { 'systemd chroot':
+    name                 => 'systemd',
+    ensure               => installed,
+    install_options      => "--installroot=${chroot}",
+    require              => Exec['wwmkchroot'],
+  }
+
   exec { 'create vnfs':
     refreshonly => true,
     path        => ['/usr/sbin', '/usr/bin', '/sbin'],
     command     => "/usr/bin/wwvnfs -y --chroot ${chroot}",
-    require     => Exec['wwmkchroot'],
+    require     => Package['systemd chroot'],
   }
 
 }
