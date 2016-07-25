@@ -93,14 +93,14 @@ class ohpc_warewulf(
   exec { 'wwmkchroot':
     refreshonly => true,
     path        => ['/usr/sbin', '/usr/bin'],
-    command     => "wwmkchroot ${os_template} ${chroot}",
+    command     => "/usr/bin/wwmkchroot ${os_template} ${chroot}",
     require     => Ohpc_base::Yumgroup['ohpc-warewulf'],
   }
 
   exec { 'create vnfs':
     refreshonly => true,
-    path        => ['/usr/sbin', '/usr/bin'],
-    command     => "wwvnfs -y --chroot ${chroot}",
+    path        => ['/usr/sbin', '/usr/bin', '/sbin'],
+    command     => "/usr/bin/wwvnfs -y --chroot ${chroot}",
     require     => Exec['wwmkchroot'],
   }
 
