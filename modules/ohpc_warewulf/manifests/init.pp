@@ -94,6 +94,7 @@ class ohpc_warewulf(
     refreshonly => true,
     path        => ['/usr/sbin', '/usr/bin'],
     command     => "/usr/bin/wwmkchroot ${os_template} ${chroot}",
+    notify      => Exec['wwbootstrap'],
     require     => Ohpc_base::Yumgroup['ohpc-warewulf'],
   }
 
