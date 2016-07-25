@@ -38,7 +38,7 @@ define ohpc_base::yumgroupchroot(
   }
 
   if $install_root {
-    $root = "--install_root=${install_root} "
+    $root = "--installroot=${install_root} "
   }
 
   exec { "Installing ${name} yum group":
