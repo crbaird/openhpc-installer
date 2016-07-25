@@ -1,0 +1,15 @@
+{
+  "name": "openhpc-ohpc_base",
+  "version": "0.1.0",
+  "author": "openhpc",
+  "summary": "Installs OpenHPC Base Packages",
+  "license": "Apache 2.0",
+  "source": "https://github.intel.com/jdlugole/openhpc-ohpc_base",
+  "project_page": "https://github.intel.com/jdlugole/openhpc-ohpc_base",
+  "issues_url": "https://github.intel.com/jdlugole/openhpc-ohpc_base",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"},
+    {"name":"puppetlabs/ntp","version_requirement":">= 1.0.0"}
+  ]
+}
+

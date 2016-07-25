@@ -1,0 +1,19 @@
+---
+
+chroot: /opt/ohpc/admin/images/centos7.2
+os_template: centos-7
+
+sms_eth_internal: eth1
+sms_ip: 192.168.2.212
+internal_netmask: 255.255.255.0
+
+sms_ipoib: 192.168.1.212
+ipoib_netmask: 255.255.255.0
+
+manage_firewall: true
+manage_epel: true
+manage_ntp: true
+
+ntp_servers:
+- ntp-host1.igk.intel.com
+- ntp-host2.igk.intel.com

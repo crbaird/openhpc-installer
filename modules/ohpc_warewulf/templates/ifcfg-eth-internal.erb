@@ -1,0 +1,10 @@
+DEVICE=<%= @sms_eth_internal %>
+BOOTPROTO=static
+IPV4_FAILURE_FATAL=no
+IPV6INIT=no
+IPV6_FAILURE_FATAL=no
+ONBOOT=yes
+PEERROUTES=yes
+NETMASK=<%= @internal_netmask %>
+IPADDR=<%= @sms_ip %>
+USERCTL=no

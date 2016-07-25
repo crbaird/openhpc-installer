@@ -1,0 +1,15 @@
+{
+  "name": "openhpc-ohpc_warewulf",
+  "version": "0.1.0",
+  "author": "openhpc",
+  "summary": "Installs OpenHPC Warewulf",
+  "license": "Apache 2.0",
+  "source": "https://github.intel.com/jdlugole/openhpc-ohpc_warewulf",
+  "project_page": "https://github.intel.com/jdlugole/openhpc-ohpc_warewulf",
+  "issues_url": "https://github.intel.com/jdlugole/openhpc-ohpc_warewulf",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"puppetlabs-limits","version_requirement":">= 0.1.0"}
+  ]
+}
+
