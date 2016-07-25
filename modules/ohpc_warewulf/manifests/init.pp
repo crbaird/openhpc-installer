@@ -97,4 +97,11 @@ class ohpc_warewulf(
     require     => Ohpc_base::Yumgroup['ohpc-warewulf'],
   }
 
+  exec { 'create vnfs':
+    refreshonly => true,
+    path        => ['/usr/sbin', '/usr/bin'],
+    command     => "wwvnfs -y --chroot ${chroot}",
+    require     => Ohpc_base::Yumgroup['ohpc-warewulf'],
+  }
+
 }
