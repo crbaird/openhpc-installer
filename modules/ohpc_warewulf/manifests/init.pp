@@ -95,14 +95,26 @@ class ohpc_warewulf(
     path        => ['/usr/sbin', '/usr/bin'],
     command     => "/usr/bin/wwmkchroot ${os_template} ${chroot}",
     require     => Ohpc_base::Yumgroup['ohpc-warewulf'],
-    notify      => Package['systemd chroot'],
+  }
+
+  file_line { 'home mount':
+    ensure  => present,
+    line    => "${sms_ip}:/home /home nfs nfsvers=3,rsize=1024,wsize=1024,cto 0 0",
+    path    => "${chroot}/etc/fstab",
+    require => Ohpc_base::Yumgroup['ohpc-warewulf'],
+  }
+
+  file_line { 'ohpc mount':
+    ensure  => present,
+    line    => "${sms_ip}:/opt/ohpc/pub /opt/ohpc/pub nfs nfsvers=3 0 0",
+    path    => "${chroot}/etc/fstab",
+    require => Ohpc_base::Yumgroup['ohpc-warewulf'],
   }
 
   exec { 'create vnfs':
     refreshonly => true,
     path        => ['/usr/sbin', '/usr/bin', '/sbin'],
     command     => "/usr/bin/wwvnfs -y --chroot ${chroot}",
-    require     => Package['systemd chroot'],
   }
 
 }
