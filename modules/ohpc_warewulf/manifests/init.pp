@@ -113,6 +113,12 @@ class ohpc_warewulf(
     require => Ohpc_base::Yumgroup['ohpc-warewulf'],
   }
 
+  exec { 'wwbootstrap':
+    path        => ['/usr/sbin', '/usr/bin'],
+    command     => '/usr/bin/wwbootstrap `uname -r`',
+    require     => Ohpc_base::Yumgroup['ohpc-warewulf'],
+  }
+
   exec { 'create vnfs':
     refreshonly => true,
     path        => ['/usr/sbin', '/usr/bin', '/sbin'],
