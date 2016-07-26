@@ -91,7 +91,6 @@ class ohpc_warewulf(
   }
 
   exec { 'wwmkchroot':
-    refreshonly => true,
     path        => ['/usr/sbin', '/usr/bin'],
     command     => "/usr/bin/wwmkchroot ${os_template} ${chroot}",
     notify      => Exec['wwbootstrap'],
