@@ -50,12 +50,13 @@ class ohpc_slurm(
 
   ohpc_base::yumgroupchroot { 'ohpc-slurm-client':
     install_root => "$chroot",
+    require      => Exec['wwmkchroot'],
   }
 
   package { 'slurm-pam_slurm-ohpc':
     ensure               => installed,
     install_options      => "--installroot=${chroot}",
-    require              => Ohpc_base::Yumgroup['ohpc-warewulf'],
+    require              => [Exec['wwmkchroot'], Ohpc_base::Yumgroup['ohpc-warewulf']],
     notify               => Exec['create vnfs'],
   }
 }

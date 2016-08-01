@@ -102,7 +102,7 @@ class ohpc_warewulf(
     line    => "${sms_ip}:/home /home nfs nfsvers=3,rsize=1024,wsize=1024,cto 0 0",
     notify  => Exec['create vnfs'],
     path    => "${chroot}/etc/fstab",
-    require => Ohpc_base::Yumgroup['ohpc-warewulf'],
+    require => [Exec['wwmkchroot'], Ohpc_base::Yumgroup['ohpc-warewulf']],
   }
 
   file_line { 'ohpc mount':
@@ -110,7 +110,7 @@ class ohpc_warewulf(
     line    => "${sms_ip}:/opt/ohpc/pub /opt/ohpc/pub nfs nfsvers=3 0 0",
     notify  => Exec['create vnfs'],
     path    => "${chroot}/etc/fstab",
-    require => Ohpc_base::Yumgroup['ohpc-warewulf'],
+    require => [Exec['wwmkchroot'], Ohpc_base::Yumgroup['ohpc-warewulf']],
   }
 
   file { '/etc/warewulf/bootstrap.conf':
